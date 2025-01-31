@@ -1,18 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
-import { PassCommandeData } from "../../public/utils/types";
+import { PassCommandeData, FullCommandeData } from "../../public/utils/types";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { orderDataState } from "../states/atoms";
+import { sendCommande } from '../services/api.service';
 
 const FormulaireCommande = () => {
+  const [recolCommande, setRecolCommande] = useRecoilState<FullCommandeData>(orderDataState);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<PassCommandeData>();
+  } = useForm<PassCommandeData>({
+    defaultValues: {
+      commande: recolCommande.commande,
+      modeLivraison: recolCommande.modeLivraison,
+      modeCommande: recolCommande.modeCommande,
+    }
+  });
 
-  const onSubmit: SubmitHandler<PassCommandeData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<PassCommandeData> = async (data) => {
+    try {
+      setIsSending(true);
+      setError(null);
+      
+      const commandeComplete: FullCommandeData = {
+        ...recolCommande,
+        ...data,
+        dateCommande: new Date().toISOString(),
+        status: "en_attente"
+      };
+
+      // Mettre à jour l'état Recoil
+      setRecolCommande(commandeComplete);
+      
+      // Envoyer la commande au serveur
+      await sendCommande(commandeComplete);
+      
+      // Message de succès
+      alert("Commande envoyée avec succès!");
+      
+    } catch (err) {
+      console.error("Erreur lors de l'envoi de la commande:", err);
+      setError(
+        err instanceof Error 
+          ? err.message 
+          : "Une erreur inconnue est survenue lors de l'envoi de la commande."
+      );
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -107,14 +149,20 @@ const FormulaireCommande = () => {
           </div>
 
           {/* Envoyer à KINTACOS */}
-          <div className="flex justify-center">
+          <div className="flex flex-col gap-2">
             <button
               type="submit"
-              className="bg-orange-500 text-white py-3 px-8 rounded-lg hover:bg-orange-600 transition-all duration-300 w-full"
+              disabled={isSending}
+              className={`bg-orange-500 text-white py-3 px-8 rounded-lg hover:bg-orange-600 transition-all duration-300 w-full ${
+                isSending ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
               onClick={handleSubmit(onSubmit)}
             >
-              Envoyer à KINTACOS
+              {isSending ? 'Envoi en cours...' : 'Envoyer à KINTACOS'}
             </button>
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
           </div>
         </div>
       </div>

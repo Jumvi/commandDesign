@@ -16,3 +16,9 @@ export interface PassCommandeData {
   modeLivraison: "Livraison" | "A emporter";
   modeCommande: "Livraison" | "A emporter";
 }
+
+// Type complet pour l'envoi au serveur
+export type FullCommandeData = CommandeData & PassCommandeData & {
+  dateCommande: string;
+  status: "en_attente" | "confirmee" | "en_preparation" | "en_livraison" | "terminee";
+};

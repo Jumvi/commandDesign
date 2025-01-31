@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CommandeData } from "../../public/utils/types";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { orderDataState } from "../states/atoms";
+import { sendCommande } from "../services/api.service";
 
 const countryCodes = [
   { value: "+243", label: "🇨🇩 +243" },
@@ -11,14 +14,33 @@ const countryCodes = [
 ];
 
 const CommandeForm: React.FC = () => {
+  const [userCommande, setUserCommande] = useState<CommandeData | null>(null);
+  const [recolCommande, setRecolCommande] =
+    useRecoilState<CommandeData>(orderDataState);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CommandeData>();
 
-  const onSubmit: SubmitHandler<CommandeData> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<CommandeData> = async (data) => {
+    try {
+      console.log("Formulaire soumis avec les données:", data);
+      setUserCommande(data);
+      setRecolCommande(data);
+      console.log("État Recoil après mise à jour:", recolCommande);
+      
+      // Appel au service API
+      await sendCommande(data);
+      
+      // Navigation seulement après succès de l'envoi
+      navigate("/nouvelle-commande");
+    } catch (error) {
+      console.error("Erreur lors de l'envoi de la commande:", error);
+      // Ici vous pourriez ajouter une notification d'erreur pour l'utilisateur
+    }
   };
   return (
     <form
@@ -46,8 +68,8 @@ const CommandeForm: React.FC = () => {
               errors.prenom ? "border-red-500" : ""
             }`}
           />
-          {errors.nom && typeof errors.nom.message === "string" && (
-            <p className="text-red-500 text-sm mt-1">{errors.nom.message}</p>
+          {errors.prenom && typeof errors.prenom.message === "string" && (
+            <p className="text-red-500 text-sm mt-1">{errors.prenom.message}</p>
           )}
         </div>
       </div>
@@ -179,12 +201,12 @@ const CommandeForm: React.FC = () => {
       </div>
 
       <div className="flex justify-end">
-        <Link
-          to="/nouvelle-commande"
+        <button
+          type="submit"
           className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-md"
         >
           Suivant
-        </Link>
+        </button>
       </div>
     </form>
   );

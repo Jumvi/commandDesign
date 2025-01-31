@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.1",
+    "@types/twilio": "^3.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "framer-motion": "^12.0.6",
     "lucide-react": "^0.474.0",
     "react": "^18.3.1",
@@ -19,7 +22,10 @@
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.4",
     "react-select": "^5.10.0",
-    "yup": "^1.6.1"
+    "recoil": "^0.7.7",
+    "twilio": "^5.4.3",
+    "yup": "^1.6.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
