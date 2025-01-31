@@ -95,7 +95,7 @@ const CommandeForm: React.FC = () => {
             {...register("codePaysWhatsapp", {
               required: "Le code pays est requis",
             })}
-            defaultValue={countryCodes[0].value} // Valeur par défaut
+            defaultValue={countryCodes[0].value}
             className="bg-transparent p-2 outline-none appearance-none border-r"
           >
             {countryCodes.map((code) => (
@@ -180,7 +180,7 @@ const CommandeForm: React.FC = () => {
 
       <div className="flex justify-end">
         <Link
-          to="/command-pass" // Remplacez cette URL par l'URL de la page cible
+          to="/command-pass"
           className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-md"
         >
           Suivant

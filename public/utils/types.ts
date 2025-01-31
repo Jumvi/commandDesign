@@ -14,5 +14,5 @@ export type CommandeData = {
 export interface PassCommandeData {
   commande: string;
   modeLivraison: "Livraison" | "A emporter";
-  optionCommande: "Livraison" | "A emporter";
+  modeCommande: "Livraison" | "A emporter";
 }
