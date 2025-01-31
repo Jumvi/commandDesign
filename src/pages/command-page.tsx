@@ -1,0 +1,30 @@
+import React from "react";
+import CommandAside from "../components/command-aside";
+import CommandeForm from "../components/command-form";
+
+function CommandPage() {
+  return (
+    <main className="bg-gray-100 py-16 px-8 md:px-24 lg:px-32 flex justify-center">
+      <div className="max-w-5xl w-full flex md:flex-row gap-12 lg:gap-20">
+        <aside className="md:w-1/3 bg-white  p-6">
+          <CommandAside />
+        </aside>
+        <section className="md:w-2/3 bg-white rounded-lg shadow-md p-6">
+          <h1 className="text-3xl font-semibold text-gray-800 mb-2">
+            Passe ta commande
+          </h1>
+          <p className="text-lg text-gray-600">Nous vous livrons à domicile</p>
+          <div className="mt-8">
+            <h2 className="text-lg font-semibold text-orange-500 mb-2">
+              Étape 1: Vos informations
+            </h2>{" "}
+            {/* Changed "Etape1" to "Étape 1" */}
+            <CommandeForm />
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+export default CommandPage;
