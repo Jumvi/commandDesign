@@ -10,3 +10,9 @@ export type CommandeData = {
   commune: string;
   commentaire?: string;
 };
+
+export interface PassCommandeData {
+  commande: string;
+  modeLivraison: "Livraison" | "A emporter";
+  optionCommande: "Livraison" | "A emporter";
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { CommandeData } from "../../public/utils/types";
+import { Link } from "react-router-dom";
 
 const countryCodes = [
   { value: "+243", label: "🇨🇩 +243" },
@@ -178,12 +179,12 @@ const CommandeForm: React.FC = () => {
       </div>
 
       <div className="flex justify-end">
-        <button
-          type="submit"
+        <Link
+          to="/command-pass" // Remplacez cette URL par l'URL de la page cible
           className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-md"
         >
           Suivant
-        </button>
+        </Link>
       </div>
     </form>
   );

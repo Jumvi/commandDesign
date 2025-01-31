@@ -18,7 +18,6 @@ function CommandPage() {
             <h2 className="text-lg font-semibold text-orange-500 mb-2">
               Étape 1: Vos informations
             </h2>{" "}
-            {/* Changed "Etape1" to "Étape 1" */}
             <CommandeForm />
           </div>
         </section>
