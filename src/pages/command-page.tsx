@@ -4,12 +4,12 @@ import CommandeForm from "../components/command-form";
 
 function CommandPage() {
   return (
-    <main className="bg-gray-100 py-16 px-8 md:px-24 lg:px-32 flex justify-center">
-      <div className="max-w-5xl w-full flex md:flex-row gap-12 lg:gap-20">
-        <aside className="md:w-1/3 bg-white  p-6">
+    <main className="bg-gray-100 py-16  md:px-24 lg:px-32 flex justify-center">
+      <div className=" layout-toggle max-w-5xl w-full flex flex-col gap-12 lg:gap-20">
+        <aside className=" black-bg  bg-white  ">
           <CommandAside />
         </aside>
-        <section className="md:w-2/3 bg-white rounded-lg shadow-md p-6">
+        <section className="align-center  md:w-2/3 bg-white rounded-lg shadow-md p-6 ">
           <h1 className="text-3xl font-semibold text-gray-800 mb-2">
             Passe ta commande
           </h1>

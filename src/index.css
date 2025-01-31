@@ -15,3 +15,155 @@ body,
 * {
   box-sizing: border-box;
 }
+
+/* Classe utilitaire pour changer le layout de row à col en mode mobile */
+.layout-toggle {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .layout-toggle {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout-toggle {
+    flex-direction: column;
+  }
+}
+
+/* Styles par défaut */
+.header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: black;
+}
+
+.logo-img {
+  display: none;
+  width: 50px;
+}
+
+.hamburger-menu {
+  display: none; /* Masqué par défaut sur les grands écrans */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.hamburger-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+}
+
+.hamburger-icon::before {
+  top: -8px;
+}
+
+.hamburger-icon::after {
+  top: 8px;
+}
+
+.black-bg {
+  background-color: white;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.header-image {
+  width: 100%; /* L'image prend toute la largeur de son conteneur */
+  max-width: 600px; /* Limite la taille de l'image */
+}
+
+/* Styles pour les écrans mobiles */
+@media (max-width: 768px) {
+  .logo-img {
+    display: block; /* Masque le logo sur mobile */
+  }
+
+  .align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex; /* Affiche le header en block */
+    padding: 2rem;
+    height: 5rem;
+  }
+
+  .aside-image {
+    width: 700px;
+  }
+
+  .hamburger-menu {
+    display: flex; /* Affiche le menu hamburger */
+  }
+
+  .header-image {
+    display: none; /* Masque l'image sur mobile */
+  }
+}
+
+@media (max-width: 468px) {
+  .header-image {
+    display: none; /* Masque l'image sur mobile */
+  }
+
+  .header {
+    display: flex;
+    padding: 2rem;
+    height: 5rem;
+    width: 25rem;
+  }
+
+  .layout-toggle {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .black-bg {
+    background-color: black;
+    width: 25rem;
+  }
+
+  .logo-img {
+    display: block; /* Masque le logo sur mobile */
+  }
+
+  .hamburger-menu {
+    display: flex; /* Affiche le menu hamburger */
+  }
+}
