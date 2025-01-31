@@ -159,6 +159,10 @@ body,
     width: 25rem;
   }
 
+  .width-312 {
+    width: 312px;
+  }
+
   .logo-img {
     display: block; /* Masque le logo sur mobile */
   }

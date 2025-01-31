@@ -25,12 +25,12 @@ const CommandeForm: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="p-8 bg-white rounded-lg shadow-md w-full max-w-2xl mx-auto"
     >
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className=" layout-toggle grid grid-cols-2 gap-4 mb-4">
         <div>
           <input
             {...register("nom", { required: "Le nom est requis" })}
             placeholder="Nom"
-            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 ${
+            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 width-312  ${
               errors.nom ? "border-red-500" : ""
             }`}
           />
@@ -42,7 +42,7 @@ const CommandeForm: React.FC = () => {
           <input
             {...register("prenom", { required: "Le prénom est requis" })}
             placeholder="Prénom"
-            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 ${
+            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 width-312  ${
               errors.prenom ? "border-red-500" : ""
             }`}
           />
@@ -138,13 +138,13 @@ const CommandeForm: React.FC = () => {
         )}
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className=" layout-toggle grid grid-cols-2 gap-4 mb-4">
         <div>
           <input
             {...register("ville", { required: "La ville est requise" })}
             type="text"
             placeholder="Ville"
-            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 ${
+            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 width-312  ${
               errors.ville ? "border-red-500" : ""
             }`}
           />
@@ -157,7 +157,7 @@ const CommandeForm: React.FC = () => {
             {...register("commune", { required: "La commune est requise" })}
             type="text"
             placeholder="Commune"
-            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 ${
+            className={`border p-2 rounded-lg w-full focus:ring-2 focus:ring-orange-300 width-312  ${
               errors.commune ? "border-red-500" : ""
             }`}
           />
