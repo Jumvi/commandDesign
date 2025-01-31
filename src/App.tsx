@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<CommandPage />} />
-        <Route path="/command-pass" element={<CommandSecondPage />} />
+        <Route path="/nouvelle-commande" element={<CommandSecondPage />} />
       </Routes>
     </Router>
   );

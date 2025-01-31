@@ -180,7 +180,7 @@ const CommandeForm: React.FC = () => {
 
       <div className="flex justify-end">
         <Link
-          to="/command-pass"
+          to="/nouvelle-commande"
           className="bg-orange-500 text-white py-2 px-6 rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-md"
         >
           Suivant
