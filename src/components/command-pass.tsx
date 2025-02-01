@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { useState } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { PassCommandeData, FullCommandeData } from "../../public/utils/types";

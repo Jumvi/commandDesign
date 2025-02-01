@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import CommandAside from "../components/command-aside";
 import FormulaireCommande from "../components/command-pass";
 
