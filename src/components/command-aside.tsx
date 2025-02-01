@@ -11,16 +11,12 @@ function CommandAside() {
         </button>
 
         <div className="logo">
-          <img
-            src="../../src/assets/logo1.png"
-            alt="Logo"
-            className="logo-img"
-          />
+          <img src="/assets/logo1.png" alt="Logo" className="logo-img" />
         </div>
       </header>
 
       <img
-        src="../../src/assets/menuKinTacos.png"
+        src="/assets/menuKinTacos.png"
         alt="kinTacos menu's"
         className=" header-image  w-full h-[700px] object-cover"
       />
