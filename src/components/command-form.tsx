@@ -4,7 +4,6 @@ import { FullCommandeData } from "../../public/utils/types";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { orderDataState } from "../states/atoms";
-import { sendCommande } from "../services/api.service";
 
 const countryCodes = [
   { value: "+243", label: "🇨🇩 +243" },
@@ -29,25 +28,30 @@ const CommandeForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<FullCommandeData> = async (data) => {
     try {
-      console.log("Formulaire soumis avec les données:", data);
-      setUserCommande(data);
-      setRecolCommande(data);
+      const fullTelephone = `${data.codePaysTelephone}${data.telephone}`;
+      const fullWhatsapp = `${data.codePaysWhatsapp}${data.whatsapp}`;
+
+      const dataWithFullNumbers = {
+        ...data,
+        telephone: fullTelephone,
+        whatsapp: fullWhatsapp,
+      };
+
+      console.log("Formulaire soumis avec les données:", dataWithFullNumbers);
+      setUserCommande(dataWithFullNumbers);
+      setRecolCommande(dataWithFullNumbers);
       console.log(
         "État Recoil après mise à jour:",
         recolCommande,
         userCommande
       );
 
-      // Appel au service API
-      await sendCommande(data);
-
-      // Navigation seulement après succès de l'envoi
       navigate("/nouvelle-commande");
     } catch (error) {
       console.error("Erreur lors de l'envoi de la commande:", error);
-      // Ici vous pourriez ajouter une notification d'erreur pour l'utilisateur
     }
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

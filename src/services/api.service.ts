@@ -21,12 +21,12 @@ interface CommandeRequest {
 
 const API_URL = "http://localhost:5001/api/commandes/nouvelle-commande";
 
-export const sendCommande = async (data: FullCommandeData): Promise<void> => {
+export const sendCommande = async (data: FullCommandeData): Promise<any> => {
   const requestData: CommandeRequest = {
     client: {
       nom: data.nom,
       prenom: data.prenom,
-      telephone: `${data.codePaysTelephone}${data.telephone}`,
+      telephone: `${data.codePaysTelephone}${data.telephone}`, // Format international pour le backend
       whatsapp: `${data.codePaysWhatsapp}${data.whatsapp}`,
       adresse: data.adresse,
       ville: data.ville,
@@ -62,7 +62,7 @@ export const sendCommande = async (data: FullCommandeData): Promise<void> => {
 
     const responseData = await response.json();
     console.log("Réponse du serveur:", responseData);
-    return responseData;
+    return responseData; // Retourne les données de la réponse
   } catch (error) {
     if (error instanceof TypeError && error.message === "Failed to fetch") {
       throw new Error(

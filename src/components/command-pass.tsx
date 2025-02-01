@@ -4,7 +4,6 @@ import { PassCommandeData, FullCommandeData } from "../../public/utils/types";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { orderDataState } from "../states/atoms";
-import { sendCommande } from "../services/api.service";
 
 const FormulaireCommande = () => {
   const [recolCommande, setRecolCommande] =
@@ -25,6 +24,23 @@ const FormulaireCommande = () => {
     },
   });
 
+  const sendWhatsAppMessages = (
+    phoneClient: string,
+    nameClient: string,
+    orderDetails: string,
+    phoneAdmin: string
+  ) => {
+    const messageClient = `Bonjour ${nameClient},%0A%0AVotre commande de tacos a été confirmée ! 🌮%0A%0A📜 *Détails de la commande* :%0A${orderDetails}%0A💰 *Total* : 📍 Merci pour votre commande ! Nous vous attendons avec impatience.`;
+
+    const messageAdmin = `Nouvelle commande reçue ! 📦%0A%0A*Détails de la commande* :%0A${orderDetails}%0A💼 *ID de commande* : 📞 *Client* : ${nameClient}%0A`;
+
+    const urlClient = `https://wa.me/${phoneClient}?text=${messageClient}`;
+    window.open(urlClient, "_blank");
+
+    const urlAdmin = `https://wa.me/${phoneAdmin}?text=${messageAdmin}`;
+    window.open(urlAdmin, "_blank");
+  };
+
   const onSubmit: SubmitHandler<PassCommandeData> = async (data) => {
     try {
       setIsSending(true);
@@ -40,8 +56,14 @@ const FormulaireCommande = () => {
       // Mettre à jour l'état Recoil
       setRecolCommande(commandeComplete);
 
-      // Envoyer la commande au serveur
-      await sendCommande(commandeComplete);
+      console.log("Commande envoyée :", commandeComplete);
+
+      sendWhatsAppMessages(
+        recolCommande.whatsapp,
+        recolCommande.nom,
+        recolCommande.commande,
+        "243818379907"
+      );
 
       // Message de succès
       alert("Commande envoyée avec succès!");
@@ -60,7 +82,7 @@ const FormulaireCommande = () => {
   return (
     <main className="bg-gray-100 py-12 px-8 flex justify-center">
       <div className="max-w-4xl w-full flex flex-col gap-6">
-        {/* Description de la commande avec Textarea et validation */}
+        {/* Description de la commande */}
         <div className="w-full">
           <textarea
             {...register("commande", {
@@ -77,7 +99,7 @@ const FormulaireCommande = () => {
           )}
         </div>
 
-        {/* Mode de commande avec boutons radio */}
+        {/* Mode de commande */}
         <div className="w-full bg-white p-3 rounded-lg shadow-md flex flex-col gap-4">
           <div className="flex flex-row sm:flex-row justify-between gap-4 sm:gap-6">
             <Controller
@@ -118,7 +140,6 @@ const FormulaireCommande = () => {
 
         {/* Section des boutons */}
         <div className="flex flex-col gap-3">
-          {/* Voir Menu */}
           <div className="flex gap-4">
             <Link to="/menu" className="w-full">
               <button
@@ -130,7 +151,6 @@ const FormulaireCommande = () => {
             </Link>
           </div>
 
-          {/* Annuler la commande et Mode de paiement */}
           <div className="flex gap-4">
             <button
               type="button"
@@ -148,7 +168,7 @@ const FormulaireCommande = () => {
             </Link>
           </div>
 
-          {/* Envoyer à KINTACOS */}
+          {/* Bouton d'envoi */}
           <div className="flex flex-col gap-2">
             <button
               type="submit"
