@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import * as React from "react";
+
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { CommandeData } from "../../public/utils/types";
+import { FullCommandeData } from "../../public/utils/types";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { orderDataState } from "../states/atoms";
@@ -14,27 +16,33 @@ const countryCodes = [
 ];
 
 const CommandeForm: React.FC = () => {
-  const [userCommande, setUserCommande] = useState<CommandeData | null>(null);
+  const [userCommande, setUserCommande] = useState<FullCommandeData | null>(
+    null
+  );
   const [recolCommande, setRecolCommande] =
-    useRecoilState<CommandeData>(orderDataState);
+    useRecoilState<FullCommandeData>(orderDataState);
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CommandeData>();
+  } = useForm<FullCommandeData>();
 
-  const onSubmit: SubmitHandler<CommandeData> = async (data) => {
+  const onSubmit: SubmitHandler<FullCommandeData> = async (data) => {
     try {
       console.log("Formulaire soumis avec les données:", data);
       setUserCommande(data);
       setRecolCommande(data);
-      console.log("État Recoil après mise à jour:", recolCommande);
-      
+      console.log(
+        "État Recoil après mise à jour:",
+        recolCommande,
+        userCommande
+      );
+
       // Appel au service API
       await sendCommande(data);
-      
+
       // Navigation seulement après succès de l'envoi
       navigate("/nouvelle-commande");
     } catch (error) {

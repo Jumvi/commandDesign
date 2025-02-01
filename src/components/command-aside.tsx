@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+
 import { FaBars } from "react-icons/fa";
 
 import "../../public/style/landing.css";

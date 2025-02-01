@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from "react";
+
 import CommandAside from "../components/command-aside";
 import CommandeForm from "../components/command-form";
 

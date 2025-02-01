@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 import CommandAside from "../components/command-aside";
 import FormulaireCommande from "../components/command-pass";
@@ -15,7 +15,7 @@ function CommandSecondPage() {
             <h2 className="text-lg font-semibold text-orange-500 mb-2">
               Étape 2: Passez votre commande
             </h2>
-            <FormulaireCommande />
+            <FormulaireCommande />+
           </div>
         </section>
       </div>
