@@ -56,6 +56,7 @@ const FormulaireCommande = () => {
         ...data,
         dateCommande: new Date().toISOString(),
         status: "en_attente",
+        modePaiement: selectedPayment as "Carte bancaire" | "Mobile Money",
       };
 
       // Mettre à jour l'état Recoil
