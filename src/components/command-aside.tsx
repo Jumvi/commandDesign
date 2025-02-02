@@ -4,7 +4,7 @@ import "../../public/style/landing.css";
 
 function CommandAside() {
   return (
-    <aside className="w-full rounded-xl overflow-hidden  duration-300">
+    <aside className="w-full no-rounded rounded-xl overflow-hidden  duration-300">
       <header className="header bg-black text-white flex justify-between items-center p-4">
         <button className="hamburger-menu" aria-label="Menu">
           <FaBars size={30} color="white" />;

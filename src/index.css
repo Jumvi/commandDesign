@@ -107,6 +107,11 @@ body {
     display: block; /* Masque le logo sur mobile */
   }
 
+  /* CSS personnalisé pour annuler les coins arrondis */
+  .no-rounded {
+    border-radius: 0;
+  }
+
   .align-center {
     display: flex;
     align-items: center;
