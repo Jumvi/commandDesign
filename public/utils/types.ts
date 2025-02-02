@@ -15,10 +15,17 @@ export interface PassCommandeData {
   commande: string;
   modeLivraison: "Livraison" | "A emporter";
   modeCommande: "Livraison" | "A emporter";
+  modePaiement: "Carte bancaire" | "Mobile Money";
 }
 
 // Type complet pour l'envoi au serveur
-export type FullCommandeData = CommandeData & PassCommandeData & {
-  dateCommande: string;
-  status: "en_attente" | "confirmee" | "en_preparation" | "en_livraison" | "terminee";
-};
+export type FullCommandeData = CommandeData &
+  PassCommandeData & {
+    dateCommande: string;
+    status:
+      | "en_attente"
+      | "confirmee"
+      | "en_preparation"
+      | "en_livraison"
+      | "terminee";
+  };
