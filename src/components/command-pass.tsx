@@ -30,14 +30,13 @@ const FormulaireCommande = () => {
     orderDetails: string,
     phoneAdmin: string
   ) => {
-    const messageClient = `Bonjour ${nameClient},%0A%0AVotre commande de tacos a été confirmée ! 🌮%0A%0A📜 *Détails de la commande* :%0A${orderDetails}%0A💰 *Total* : 📍 Merci pour votre commande ! Nous vous attendons avec impatience.`;
+    const message = `🍽️ *Nouvelle commande reçue !* 🍽️%0A%0A
+👤 *Client* : +${nameClient}%0A
+📞 *Contact WhatsApp* : ${phoneClient}%0A%0A
+📜 *Détails de la commande* :%0A${orderDetails}%0A%0A
+⚡ Merci de traiter cette commande rapidement !`;
 
-    const messageAdmin = `Nouvelle commande reçue ! 📦%0A%0A*Détails de la commande* :%0A${orderDetails}%0A💼 *ID de commande* : 📞 *Client* : ${nameClient}%0A`;
-
-    const urlClient = `https://wa.me/${phoneClient}?text=${messageClient}`;
-    window.open(urlClient, "_blank");
-
-    const urlAdmin = `https://wa.me/${phoneAdmin}?text=${messageAdmin}`;
+    const urlAdmin = `https://wa.me/${phoneAdmin}?text=${message}`;
     window.open(urlAdmin, "_blank");
   };
 
@@ -56,13 +55,11 @@ const FormulaireCommande = () => {
       // Mettre à jour l'état Recoil
       setRecolCommande(commandeComplete);
 
-      console.log("Commande envoyée :", commandeComplete);
-
       sendWhatsAppMessages(
         recolCommande.whatsapp,
         recolCommande.nom,
         recolCommande.commande,
-        "243818379907"
+        "+243818379907"
       );
 
       // Message de succès
