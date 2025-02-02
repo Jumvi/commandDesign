@@ -48,6 +48,10 @@ body {
   background-color: black;
 }
 
+.menu-image {
+  width: 400px;
+  object-fit: cover;
+}
 .logo-img {
   display: none;
   width: 50px;
@@ -134,6 +138,11 @@ body {
     display: flex; /* Affiche le menu hamburger */
   }
 
+  .menu-image {
+    width: 350px;
+    object-fit: cover;
+  }
+
   .header-image {
     display: none; /* Masque l'image sur mobile */
   }
@@ -182,6 +191,11 @@ body {
     width: 100%;
     background-color: inherit;
     padding: 0rem;
+  }
+
+  .menu-image {
+    width: 340px;
+    object-fit: cover;
   }
 
   .hamburger-menu {
