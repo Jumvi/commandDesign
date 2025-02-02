@@ -143,7 +143,7 @@ body {
     display: flex;
     padding: 2rem;
     height: 5rem;
-    width: 29rem;
+    width: 100%;
   }
 
   .layout-toggle {
@@ -155,14 +155,14 @@ body {
   .align-center {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
+    padding: 0rem;
   }
 
   .black-bg {
     background-color: black;
-    width: 29rem;
-    padding: 1rem;
+    width: 100%;
   }
 
   .width-312 {
@@ -174,8 +174,9 @@ body {
   }
 
   .width-mobile {
-    width: 24rem;
+    width: 100%;
     background-color: inherit;
+    padding: 0rem;
   }
 
   .hamburger-menu {
