@@ -3,7 +3,7 @@ import FormulaireCommande from "../components/command-pass";
 
 function CommandSecondPage() {
   return (
-    <main className="bg-gray-100 py-16 md:px-24 lg:px-32 flex justify-center">
+    <main className="width-mobile bg-gray-100 py-16 md:px-24 lg:px-32 flex justify-center">
       <div className="layout-toggle max-w-5xl w-full flex flex-col gap-12 lg:gap-20">
         <aside className="black-bg bg-white">
           <CommandAside />

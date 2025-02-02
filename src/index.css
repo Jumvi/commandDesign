@@ -138,7 +138,7 @@ body,
     display: flex;
     padding: 2rem;
     height: 5rem;
-    width: 25rem;
+    width: 29rem;
   }
 
   .layout-toggle {
@@ -156,7 +156,8 @@ body,
 
   .black-bg {
     background-color: black;
-    width: 25rem;
+    width: 29rem;
+    padding: 1rem;
   }
 
   .width-312 {
@@ -165,6 +166,11 @@ body,
 
   .logo-img {
     display: block; /* Masque le logo sur mobile */
+  }
+
+  .width-mobile {
+    width: 24rem;
+    background-color: inherit;
   }
 
   .hamburger-menu {
