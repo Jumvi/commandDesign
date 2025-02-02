@@ -34,7 +34,7 @@ export type FullCommandeData = {
   commande: string;
   modeLivraison: "Livraison" | "A emporter";
   modeCommande: "Livraison" | "A emporter";
-  modePaiement: "Carte bancaire" | "Mobile Money";
+  modePaiement?: "Carte bancaire" | "Mobile Money";
   dateCommande: string;
   status: "en_attente" | "traitée";
 };
